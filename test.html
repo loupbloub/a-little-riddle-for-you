@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Étoiles qui tombent</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+    }
+
+    .star {
+      position: fixed;
+      top: -20px;
+      color: white;
+      font-size: 12px;
+      animation: fall linear;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  function createStar() {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.innerText = '★'; // tu peux remplacer par ✦, ✧, ❄ etc.
+
+    // Position horizontale aléatoire
+    star.style.left = Math.random() * window.innerWidth + 'px';
+
+    // Taille et vitesse aléatoires
+    const size = Math.random() * 10 + 10; // entre 10px et 20px
+    const duration = Math.random() * 3 + 2; // entre 2s et 5s
+    star.style.fontSize = size + 'px';
+    star.style.animationDuration = duration + 's';
+
+    document.body.appendChild(star);
+
+    // Supprimer l’étoile après l’animation
+    setTimeout(() => {
+      star.remove();
+    }, duration * 1000);
+  }
+
+  // Créer des étoiles toutes les 100ms
+  setInterval(createStar, 100);
+</script>
+
+</body>
+</html>

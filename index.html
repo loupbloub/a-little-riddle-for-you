@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="riddle">
+<p>Mon premier est binaire mais n’est pas rond,</p>
+<p>Mon deuxième apparaît dans les couleurs de l’arc en ciel, le son ou après la mort</p>
+<p>Mon troisième déploît ses saveurs au contact de l’eau chaude, mais toi comme moi le préférons glacé,</p>
+<p>Mon tout t'aideras à mener l'enquête</p>
+    </div>
+
+<button class="glow-on-hover" id="startStars">Trouvé</button>
+
+
+
+
+
+<!--J’ai codé ça avec mes propres mains, et avec beaucoup de mon coeur aussi, 
+Pour te dire d’abord que je t’aime, que j’ai parfois honte d’avouer, par habitude de tout vouloir faire seule, 
+que ma vie est plus ensoleillé depuis que tu y es entré, que c’est simple et doux, que j’ai tellement peur, 
+mais que tu me donnes envie d’être assez forte pour la dépasser et profiter de ce qui s’écrit entre nous.-->
+
+<!-- Tu ressembles à ce qu’il y avait dans de vieilles prières ou d’anciens souhaits quand je fermais les yeux très fort à 11:11, 
+et malgré ça, tu apportes ta propre magie qui me surprends tellement. Tu bouscules en remettant de l’ordre, 
+et c'est si simple de se sentir bien auprès de toi, je me sens confortable - and in many ways you feel like home.--> 
+<!--Alors si il me reste encore un peu de quoi faire un souhait, j’aimerais me souhaiter de pouvoir faire un long bout de chemin avec toi, 
+de voir toutes les saisons défilées, de voir tellement de paysages, d’avoir le temps de goûter tous les plats, d’avoir toutes les discussions ;
+Et pour autant que tu le souhaites aussi, alors peut-être que ce sera toi, ce reste de chemin.--> 
+
+<!--Doooonc, hum hum, euh, est-ce que tu veux sortir avec moi? -->
+
+
+<!--               ,~.
+              {;@;}
+        ,~.  ..`~' . *  ,~.
+       {;@;}  . ,~. ** {;@;}
+     *..`~'  * {;@;} .  `~'
+   ,~.   .. **  `~'  ** . ,~.
+  {;@;} * ,~.   * ... *  {;@;}
+   `~' ..{;@;} **  ,~. .. `~'
+    ,~. . `~'. .. {;@;}   *..  *
+   {;@;}  .. ,~. ..`~' **   ,~.
+    `~'. ** {;@;}  **   ** {;@;}
+      .. * . `~'  ** ,~. ...`~'
+       * ~~  ** ... {;@;} .
+     .____  ~ *  ~   `~'.~____.
+      \ \ \\  | ||| |  / / / /
+  ____ \___\\ || | || /,/___/ ____
+./___ \_____\\| |||||//______/ ___\.
+ \____/  ,___. | | | .___,   \____/
+        /     \,--. /`__/ \
+       |     \_\   /_      |
+        \ ,--, /`_'\ \    /
+         `____/  /  \____'
+             /  /|\  \\,
+            (  (|||\  \ \
+            /\  \||\\  \ \
+            //\  \|\\)  )
+               )  ) \'`'
+              `'`'         -->
+
+</body>
+</html>
+
+
+
+
+
+
+<script>
+function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.innerText = '✧.*';
+
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      const size = Math.random() * 20 + 40;
+      const duration = Math.random() * 3 + 2;
+
+      star.style.fontSize = size + 'px';
+      star.style.animationDuration = duration + 's';
+
+      document.body.appendChild(star);
+
+      setTimeout(() => {
+        star.remove();
+      }, duration * 1000);
+    }
+
+    let intervalStarted = false;
+    document.getElementById('startStars').addEventListener('click', function () {
+      if (!intervalStarted) {
+        setInterval(createStar, 100);
+        intervalStarted = true;
+
+
+        this.style.display = 'none';
+      }
+    });
+
+</script>
+
+
+
+
+
+<style>
+@font-face {
+  font-family: "fipps";
+  src: url("fipps.otf") format("opentype");
+}
+
+
+body {
+  background-image: url(./poisson.gif);
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-size: contain;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: fipps;
+}
+
+
+.riddle {
+  max-width: 600px;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-family: fipps;
+}
+.riddle p {
+  margin-bottom: 1em; 
+}
+
+
+.glow-on-hover {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #363434;
+  background: #e4e1e1;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  font-family: fipps;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #ededed;
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent ;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+
+.star {
+  position: fixed;
+  top: -20px;
+  color: rgb(251, 255, 197);
+  font-size: 40px;
+  animation: fall linear;
+  pointer-events: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+</style>
